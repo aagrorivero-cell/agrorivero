@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroRivero — Asesoramiento Agroambiental y Negocios Ganaderos</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* VARIABLES DE DISEÑO */
+        :root {
+            --verde-oscuro: #1a4a2e;
+            --verde-medio: #2d7a4f;
+            --dorado: #c9a84c;
+            --crema: #f5f0e8;
+            --crema-oscuro: #eaddcd;
+            --blanco: #ffffff;
+            --texto-oscuro: #1a1a1a;
+            --texto-mutado: #555555;
+            --sombra: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --borde-radio: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* REGLAS GENERALES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--texto-oscuro);
+            background-color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: var(--borde-radio);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-medio);
+            color: var(--blanco);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--verde-oscuro);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 2px solid var(--blanco);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--blanco);
+            color: var(--verde-oscuro);
+        }
+
+        .btn-accent {
+            background-color: #25d366; /* WhatsApp color */
+            color: var(--blanco);
+        }
+
+        .btn-accent:hover {
+            background-color: #128c7e;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--dorado);
+        }
+
+        .brand-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
+            transition: var(--transition);
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            border-bottom-color: var(--dorado);
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blanco);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            background: url('post_jpg.png') no-repeat center center/cover;
+            padding: 120px 0;
+            color: var(--blanco);
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 74, 46, 0.85); /* Overlay verde oscuro */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--blanco);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* QUIÉN SOY */
+        .about {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img-container {
+            position: relative;
+            justify-self: center;
+        }
+
+        .about-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--crema);
+            box-shadow: var(--sombra);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 80px;
+            height: 80px;
+            background-color: var(--blanco);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: var(--sombra);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--dorado);
+        }
+
+        .about-badge img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .subtitle-divider {
+            height: 3px;
+            width: 60px;
+            background-color: var(--dorado);
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--texto-mutado);
+        }
+
+        .about-details {
+            margin-top: 25px;
+            border-left: 3px solid var(--verde-medio);
+            padding-left: 20px;
+        }
+
+        .about-details p {
+            font-style: italic;
+            font-weight: 500;
+            color: var(--verde-oscuro);
+        }
+
+        /* SERVICIOS */
+        .services {
+            padding: 80px 0;
+            background-color: var(--crema);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 10px;
+        }
+
+        .section-header .divider {
+            height: 3px;
+            width: 80px;
+            background-color: var(--dorado);
+            margin: 15px auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--blanco);
+            padding: 35px 25px;
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--verde-medio);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--texto-mutado);
+        }
+
+        /* AGRONEGOCIO Y NEGOCIO GANADERO */
+        .business {
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+            padding: 80px 0;
+        }
+
+        .business-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .business-col h2 {
+            font-size: 2rem;
+            color: var(--blanco);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--dorado);
+            padding-bottom: 10px;
+        }
+
+        .business-col p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-size: 0.98rem;
+        }
+
+        .business-highlights {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--borde-radio);
+            border-left: 4px solid var(--dorado);
+        }
+
+        .business-highlights ul li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .business-highlights ul li i {
+            color: var(--dorado);
+            margin-top: 4px;
+        }
+
+        /* PASTURAS */
+        .pastures {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .pastures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .pasture-accordion-item {
+            border: 1px solid #e0e0e0;
+            border-radius: var(--borde-radio);
+            overflow: hidden;
+            background-color: var(--blanco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .pasture-header {
+            padding: 18px 20px;
+            background-color: var(--crema);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .pasture-header:hover {
+            background-color: var(--crema-oscuro);
+        }
+
+        .pasture-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--verde-oscuro);
+        }
+
+        .pasture-scientific {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--texto-mutado);
+            display: block;
+        }
+
+        .pasture-header i {
+            color: var(--verde-medio);
+            transition: var(--transition);
+        }
+
+        .pasture-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            background-color: var(--blanco);
+        }
+
+        .pasture-content.active {
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .pasture-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .pasture-meta span {
+            background-color: var(--crema);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .pasture-meta strong {
+            color: var(--verde-oscuro);
+        }
+
+        .pasture-desc {
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+        }
+
+        /* PASTURÓMETRO */
+        .pasturometro {
+            padding: 80px 0;
+            background-color: var(--crema);
+        }
+
+        .pasturometro-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .pasturometro-badge {
+            display: inline-block;
+            background-color: var(--dorado);
+            color: var(--verde-oscuro);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .pasturometro-content h2 {
+            font-size: 2.2rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 20px;
+        }
+
+        .pasturometro-features {
+            margin: 25px 0;
+        }
+
+        .pasturometro-feature {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .pasturometro-feature i {
+            font-size: 1.5rem;
+            color: var(--verde-medio);
+            margin-top: 3px;
+        }
+
+        .pasturometro-feature h4 {
+            font-size: 1.05rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .pasturometro-feature p {
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+        }
+
+        .pasturometro-img-container {
+            justify-self: center;
+        }
+
+        .pasturometro-img {
+            max-width: 100%;
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra);
+            border: 4px solid var(--blanco);
+        }
+
+        /* PRECIOS DE MERCADO */
+        .prices {
+            padding: 80px 0;
+            background-color: var(--blanco);
+            text-align: center;
+        }
+
+        .prices-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--crema);
+            padding: 40px;
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra);
+        }
+
+        .prices i {
+            font-size: 3.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 20px;
+        }
+
+        .prices h2 {
+            font-size: 2rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+        }
+
+        .prices p {
+            font-size: 1rem;
+            color: var(--texto-mutado);
+            margin-bottom: 30px;
+        }
+
+        .update-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--texto-mutado);
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* SIMULADORES */
+        .simulators {
+            padding: 80px 0;
+            background-color: var(--crema);
+        }
+
+        .simulators-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .sim-tab {
+            padding: 10px 20px;
+            background-color: var(--blanco);
+            border: 1px solid #ddd;
+            border-radius: var(--borde-radio);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+            transition: var(--transition);
+        }
+
+        .sim-tab.active, .sim-tab:hover {
+            background-color: var(--verde-medio);
+            color: var(--blanco);
+            border-color: var(--verde-medio);
+        }
+
+        .sim-container {
+            background-color: var(--blanco);
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra);
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .sim-pane {
+            display: none;
+        }
+
+        .sim-pane.active {
+            display: block;
+        }
+
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--verde-oscuro);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: var(--borde-radio);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 5px rgba(45, 122, 79, 0.2);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .sim-results {
+            background-color: var(--crema);
+            padding: 25px;
+            border-radius: var(--borde-radio);
+            border: 1px solid var(--crema-oscuro);
+        }
+
+        .sim-results h3 {
+            font-size: 1.25rem;
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--dorado);
+            padding-bottom: 8px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.08);
+            padding-bottom: 6px;
+        }
+
+        .result-item.total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--verde-oscuro);
+            border-bottom: 2px solid var(--verde-medio);
+            margin-top: 15px;
+            padding-bottom: 10px;
+        }
+
+        .sim-actions {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        /* CONTACTO */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--verde-oscuro);
+            color: var(--blanco);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--borde-radio);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--dorado);
+        }
+
+        .contact-card-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-card-text p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .contact-form {
+            background-color: var(--blanco);
+            color: var(--texto-oscuro);
+            padding: 40px;
+            border-radius: var(--borde-radio);
+            box-shadow: var(--sombra);
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #11311f;
+            color: var(--blanco);
+            padding: 50px 0 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--dorado);
+        }
+
+        .footer-col img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid var(--dorado);
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--dorado);
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--dorado);
+            color: var(--verde-oscuro);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE DESIGN (MOBILE FIRST) */
+        @media (max-width: 992px) {
+            .about-grid, .pasturometro-grid, .business-grid, .sim-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-img-container {
+                order: -1;
+            }
+
+            .pasturometro-img-container {
+                order: -1;
+                max-width: 350px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 67px;
+                left: 0;
+                width: 100%;
+                background-color: var(--verde-oscuro);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .sim-container {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">
+                <img src="logo_jpg.jpg" alt="AgroRivero Logo">
+                <span class="brand-text">AgroRivero</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <a href="#quien-soy">Quién Soy</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#agronegocio">Agronegocio</a>
+                <a href="#pasturas">Pasturas</a>
+                <a href="#pasturometro">Pasturómetro</a>
+                <a href="#simuladores">Simuladores</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. HERO -->
+    <header class="hero" id="inicio">
+        <div class="container hero-content">
+            <h1>Del Campo al Negocio, con Conocimiento</h1>
+            <p>Asesoramiento técnico ganadero, tecnología aplicada al campo y gestión comercial en el corazón de Uruguay.</p>
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn btn-primary">Conocé los Servicios</a>
+                <a href="https://wa.me/59892510561" target="_blank" class="btn btn-accent">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 3. QUIÉN SOY -->
+    <section class="about" id="quien-soy">
+        <div class="container about-grid">
+            <div class="about-img-container">
+                <img src="joaquin_jpg.png" alt="Joaquín Rivero" class="about-img">
+                <div class="about-badge">
+                    <img src="logo_jpg.jpg" alt="Logo Detalle">
+                </div>
+            </div>
+            <div class="about-content">
+                <h2>Joaquín Rivero</h2>
+                <div class="subtitle-divider"></div>
+                <p>Estudiante avanzado de Ingeniería Agroambiental en la Universidad Tecnológica (UTEC - Uruguay). Mi enfoque integra la producción agropecuaria tradicional con la sostenibilidad ambiental y la incorporación de tecnologías de precisión.</p>
+                <p>Desempeño funciones como consignatario en el <strong>Escritorio Rural de Freitas</strong>, facilitando la compraventa de ganado, la coordinación de embarques a frigoríficos y operaciones del mercado de reposición en ferias de la región.</p>
+                <p>A través de AgroRivero, busco tender un puente entre la teoría científica y la práctica del productor ganadero de nuestro país.</p>
+                <div class="about-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Zona de operación: Durazno, Florida, Flores y Tacuarembó, Uruguay.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVICIOS -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios Profesionales</h2>
+                <div class="divider"></div>
+                <p>Propuestas técnicas y comerciales adaptadas a las necesidades reales del establecimiento rural de hoy.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Tarjeta 1 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cow"></i></div>
+                    <h3>Compraventa de Ganado</h3>
+                    <p>Consignatario en Escritorio Rural de Freitas. Gestión integral de operaciones de hacienda vacuna y ovina, cargas a planta frigorífica y negocios particulares en el centro del país.</p>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                    <h3>Asesoramiento en Pastoreo Rotativo</h3>
+                    <p>Diseño y subdivisión técnica de potreros para optimizar la cosecha de forraje, favorecer el descanso del tapiz y maximizar la ganancia individual.</p>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-ruler-combined"></i></div>
+                    <h3>Aforos de Pasturas</h3>
+                    <p>Evaluación y pesaje directo de la biomasa disponible en campo para ajustar la carga animal instantánea de forma empírica y objetiva.</p>
+                </div>
+                <!-- Tarjeta 4 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Tasaciones</h3>
+                    <p>Estimación y valuación objetiva de lotes ganaderos, predios productivos y recursos forrajeros bajo criterios profesionales y del mercado actual.</p>
+                </div>
+                <!-- Tarjeta 5 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-leaf"></i></div>
+                    <h3>Asesoramiento Agroambiental</h3>
+                    <p>Análisis de sostenibilidad, manejo y conservación de suelos, control de erosión y adecuación de prácticas frente a exigencias del mercado internacional.</p>
+                </div>
+                <!-- Tarjeta 6 -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Tecnología para el Campo</h3>
+                    <p>Asistencia técnica e implementación de sensores IoT e innovaciones específicas orientadas a automatizar mediciones y optimizar recursos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. AGRONEGOCIO Y NEGOCIO GANADERO -->
+    <section class="business" id="agronegocio">
+        <div class="container business-grid">
+            <div class="business-col">
+                <h2>Agronegocio</h2>
+                <p>El agronegocio en Uruguay exige el cumplimiento de estándares rigurosos. Nos enfrentamos a un escenario dinámico donde la inserción internacional de nuestras carnes depende cada vez más de la transparencia del proceso productivo y la trazabilidad obligatoria.</p>
+                <p>La adopción de normativas vinculadas a la no deforestación (EUDR) y la medición de huella de carbono redefinen el valor de nuestra producción nacional en mercados de alto valor.</p>
+                <div class="business-highlights">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Inserción internacional y certificaciones de proceso.</li>
+                        <li><i class="fas fa-check"></i> Monitoreo de emisiones y huella ambiental de los sistemas.</li>
+                        <li><i class="fas fa-check"></i> Valorización comercial de la ganadería sobre campo natural.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="business-col">
+                <h2>Negocio Ganadero</h2>
+                <p>La toma de decisiones comerciales en ganadería debe estar respaldada por datos precisos y un conocimiento fluido de los mercados locales de reposición y gordo.</p>
+                <p>A través de la asociación comercial con <strong>Escritorio Rural de Freitas</strong>, se facilita la articulación de negocios en ferias presenciales, pantallas locales e intermediación directa para frigoríficos, tomando como referencia las planillas semanales de la Asociación de Consignatarios de Ganado (ACG).</p>
+                <div class="business-highlights">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Consignación transparente y segura.</li>
+                        <li><i class="fas fa-check"></i> Logística de embarques y coordinación técnica de fletes.</li>
+                        <li><i class="fas fa-check"></i> Monitoreo constante de valores de referencia e índices de mercado.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. PASTURAS -->
+    <section class="pastures" id="pasturas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pasturas del Uruguay</h2>
+                <div class="divider"></div>
+                <p>Conozca las especies forrajeras claves que sustentan la ganadería nacional y el manejo sugerido para cada una.</p>
+            </div>
+            
+            <div class="pastures-grid">
+                <!-- Especie 1 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Gramilla</span>
+                            <span class="pasture-scientific">Cynodon dactylon</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Naturalizada</span>
+                            <span><strong>Estación:</strong> Estival</span>
+                        </div>
+                        <p class="pasture-desc">Especie rastrera muy persistente y adaptada a condiciones de pastoreo intensivo. Excelente resistencia al pisoteo y al déficit hídrico, aunque detiene su crecimiento con bajas temperaturas.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 2 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Pasto miel / Capín</span>
+                            <span class="pasture-scientific">Paspalum dilatatum</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Nativa</span>
+                            <span><strong>Estación:</strong> Primavera - Otoño</span>
+                        </div>
+                        <p class="pasture-desc">Gramínea perenne de gran valor nutritivo y alta palatabilidad. Muy frecuente en suelos fértiles y húmedos de Uruguay. Responde bien a la fertilización nitrogenada.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 3 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Cebadilla criolla</span>
+                            <span class="pasture-scientific">Bromus auleticus</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Nativa</span>
+                            <span><strong>Estación:</strong> Otoño - Invernal</span>
+                        </div>
+                        <p class="pasture-desc">Especie perenne de invierno sumamente apreciada por su calidad forrajera. Posee una gran tolerancia a la sequía gracias a su sistema radicular profundo y es clave para el diferimiento de forraje.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 4 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Lotus</span>
+                            <span class="pasture-scientific">Lotus corniculatus</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Implantada / Sembrada</span>
+                            <span><strong>Estación:</strong> Primavera - Verano</span>
+                        </div>
+                        <p class="pasture-desc">Leguminosa perenne de gran rusticidad. Se destaca por no producir meteorismo (hinchazón) en el ganado vacuno y por su capacidad de fijar nitrógeno atmosférico al suelo.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 5 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Trébol blanco</span>
+                            <span class="pasture-scientific">Trifolium repens</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Implantada</span>
+                            <span><strong>Estación:</strong> Otoño - Primavera</span>
+                        </div>
+                        <p class="pasture-desc">Leguminosa rastrera de alta calidad y digestibilidad. Requiere buenos niveles de fósforo en el suelo y humedad constante para expresar su potencial productivo.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 6 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Raigrás anual</span>
+                            <span class="pasture-scientific">Lolium multiflorum</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Implantada / Verdeo</span>
+                            <span><strong>Estación:</strong> Otoño - Invierno</span>
+                        </div>
+                        <p class="pasture-desc">La gramínea de invierno más sembrada en el país para verdeos. Altamente productiva, de excelente calidad y gran respuesta frente a la fertilización nitrogenada en otoños templados.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 7 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Festuca</span>
+                            <span class="pasture-scientific">Festuca arundinacea</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Implantada Perenne</span>
+                            <span><strong>Estación:</strong> Otoño - Primavera</span>
+                        </div>
+                        <p class="pasture-desc">Gramínea de base muy persistente en mezclas. Soporta suelos pesados, arcillosos o con anegamiento temporario. Requiere un manejo estricto de la defoliación para no perder calidad.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 8 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Alfalfa</span>
+                            <span class="pasture-scientific">Medicago sativa</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Implantada</span>
+                            <span><strong>Estación:</strong> Primavera - Verano</span>
+                        </div>
+                        <p class="pasture-desc">La reina de las forrajeras por su alto contenido proteico y rendimiento de materia seca. Requiere suelos profundos, bien drenados, con pH neutro y nula tolerancia al anegamiento de raíces.</p>
+                    </div>
+                </div>
+
+                <!-- Especie 9 -->
+                <div class="pasture-accordion-item">
+                    <div class="pasture-header">
+                        <div>
+                            <span class="pasture-title">Campo Natural Mejorado</span>
+                            <span class="pasture-scientific">Asociación multiespecie</span>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="pasture-content">
+                        <div class="pasture-meta">
+                            <span><strong>Tipo:</strong> Manejo / Introducción</span>
+                            <span><strong>Estación:</strong> Todo el año</span>
+                        </div>
+                        <p class="pasture-desc">Práctica que consiste en la incorporación directa de leguminosas (como Lotus o Trébol) sobre la vegetación nativa mediante refertilización fosfatada, sin destruir la estructura nativa del suelo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. PASTURÓMETRO -->
+    <section class="pasturometro" id="pasturometro">
+        <div class="container pasturometro-grid">
+            <div class="pasturometro-content">
+                <span class="pasturometro-badge">🔬 Proyecto en Desarrollo</span>
+                <h2>Pasturómetro — Tecnología de Precisión para tus Pasturas</h2>
+                <p>Una herramienta diseñada para automatizar el monitoreo del crecimiento del forraje, optimizando los tiempos de rotación y evitando el sobrepastoreo.</p>
+                
+                <div class="pasturometro-features">
+                    <div class="pasturometro-feature">
+                        <i class="fas fa-satellite-dish"></i>
+                        <div>
+                            <h4>Sensor LiDAR e IoT</h4>
+                            <p>Equipamiento fijo montado en brazo mecánico con sensor RPLiDAR A1M8 de barrido activo, el cual escanea y calcula la altura media del tapiz con precisión milimétrica.</p>
+                        </div>
+                    </div>
+                    <div class="pasturometro-feature">
+                        <i class="fas fa-cloud-sun-rain"></i>
+                        <div>
+                            <h4>Estación Climática Integrada</h4>
+                            <p>Monitoreo local mediante sensores integrados de temperatura, humedad relativa y pluviómetro digital autovaciable.</p>
+                        </div>
+                    </div>
+                    <div class="pasturometro-feature">
+                        <i class="fas fa-bell"></i>
+                        <div>
+                            <h4>Alertas por WhatsApp</h4>
+                            <p>Defina la altura crítica o el remanente deseado de pastoreo; el sistema emitirá alertas automáticas a su celular cuando las parcelas alcancen el punto óptimo de entrada o salida de los animales.</p>
+                        </div>
+                    </div>
+                    <div class="pasturometro-feature">
+                        <i class="fas fa-solar-panel"></i>
+                        <div>
+                            <h4>Autonomía y Conectividad</h4>
+                            <p>Panel solar integrado que asegura funcionamiento continuo, y conectividad global mediante modem móvil 4G/LTE con respaldo satelital.</p>
+                        </div>
+                    </div>
+                </div>
+                <p><em>Este sistema nace como iniciativa de desarrollo académico aplicada al campo a través de UTEC y AgroRivero.</em></p>
+            </div>
+            <div class="pasturometro-img-container">
+                <img src="pasturometro_jpg.png" alt="Prototipo Pasturómetro" class="pasturometro-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. PRECIOS DE MERCADO -->
+    <section class="prices">
+        <div class="container">
+            <div class="prices-container">
+                <i class="far fa-file-pdf"></i>
+                <h2>Precios del Mercado Ganadero</h2>
+                <p>Consulte y descargue de forma directa las referencias oficiales de la Asociación de Consignatarios de Ganado (ACG) correspondientes a la última semana.</p>
+                <a href="precios_acg.pdf" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Ver Planilla de Precios Actual
+                </a>
+                <div>
+                    <span class="update-tag">Última actualización manual: Noviembre 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. SIMULADORES DE PRODUCCIÓN -->
+    <section class="simulators" id="simuladores">
+        <div class="container">
+            <div class="section-header">
+                <h2>Analizá tu Producción</h2>
+                <div class="divider"></div>
+                <p>Estimaciones ágiles y orientativas para la planificación del rodeo ganadero basadas en coeficientes técnicos típicos.</p>
+            </div>
+
+            <div class="simulators-nav">
+                <button class="sim-tab active" onclick="switchSim(event, 'sim-terneros')">Simulador de Terneros</button>
+                <button class="sim-tab" onclick="switchSim(event, 'sim-pariciones')">Calendario de Pariciones</button>
+                <button class="sim-tab" onclick="switchSim(event, 'sim-carga')">Carga Animal Sugerida</button>
+            </div>
+
+            <div class="sim-container">
+                <!-- Simulador 1: Terneros -->
+                <div id="sim-terneros" class="sim-pane active">
+                    <div class="sim-grid">
+                        <div class="sim-inputs">
+                            <form id="ternerosForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cantTerneros">Cant. de terneros</label>
+                                        <input type="number" id="cantTerneros" value="50" min="1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mesNacimiento">Mes Nacimiento</label>
+                                        <select id="mesNacimiento">
+                                            <option value="8">Agosto</option>
+                                            <option value="9" selected>Septiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="destete">¿Destetado?</label>
+                                        <select id="destete" onchange="toggleDesteteMes()">
+                                            <option value="no">No</option>
+                                            <option value="si" selected>Sí</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" id="mesDesteteContainer">
+                                        <label for="mesDestete">Mes Destete</label>
+                                        <select id="mesDestete">
+                                            <option value="3">Marzo</option>
+                                            <option value="4" selected>Abril</option>
+                                            <option value="5">Mayo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="alimentacion">Base Alimenticia</label>
+                                    <select id="alimentacion">
+                                        <option value="campo_natural">Campo Natural</option>
+                                        <option value="pradera" selected>Pradera Implantada</option>
+                                        <option value="suplemento">Ración Suplementaria</option>
+                                        <option value="pradera_suplemento">Pradera + Ración</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="raza">Biotipo / Raza</label>
+                                    <select id="raza">
+                                        <option value="hereford">Hereford</option>
+                                        <option value="angus" selected>Aberdeen Angus</option>
+                                        <option value="cruza">Cruza / Careta</option>
+                                        <option value="cruza_indica">Cruza Índica</option>
+                                    </select>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="tienePesada">¿Cuenta con pesaje?</label>
+                                        <select id="tienePesada" onchange="togglePesadaInput()">
+                                            <option value="no">No (Estimar)</option>
+                                            <option value="si" selected>Sí (Ingresar)</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" id="pesoActualContainer">
+                                        <label for="pesoActual">Peso actual promedio (kg)</label>
+                                        <input type="number" id="pesoActual" value="160" min="50">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="proyeccion">Horizonte de Proyección</label>
+                                    <select id="proyeccion">
+                                        <option value="3">3 Meses</option>
+                                        <option value="6" selected>6 Meses</option>
+                                        <option value="9">9 Meses</option>
+                                        <option value="12">12 Meses</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sim-results">
+                            <h3>Proyección Estimativa</h3>
+                            <div class="result-item">
+                                <span>Ganancia Diaria (G.D.P.)</span>
+                                <strong id="resGdp">0.00 kg/día</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Peso Final Estimado</span>
+                                <strong id="resPesoFinal">0 kg</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Precio Base ACG (Ref.)</span>
+                                <strong id="resPrecioBase">U$S 0.00/kg</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Valor Bruto Total</span>
+                                <strong id="resValorBruto">U$S 0.00</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Comisión Escritorio (3%)</span>
+                                <strong id="resComision">U$S 0.00</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>IVA sobre Comisión (22%)</span>
+                                <strong id="resIva">U$S 0.00</strong>
+                            </div>
+                            <div class="result-item total">
+                                <span>Retorno Neto Estimado</span>
+                                <strong id="resNeto">U$S 0.00</strong>
+                            </div>
+                            <div class="sim-actions">
+                                <button type="button" class="btn btn-accent" onclick="consultarWhatsapp()">
+                                    <i class="fab fa-whatsapp"></i> Consultar Negocio con Joaquín
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulador 2: Pariciones -->
+                <div id="sim-pariciones" class="sim-pane">
+                    <div class="sim-grid">
+                        <div class="sim-inputs">
+                            <form id="paricionesForm">
+                                <div class="form-group">
+                                    <label for="fechaEntorada">Fecha de inicio de entorada</label>
+                                    <input type="date" id="fechaEntorada" value="2024-11-15">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gestacionDias">Días de gestación promedio</label>
+                                    <input type="number" id="gestacionDias" value="283" min="270" max="295">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sim-results">
+                            <h3>Fechas Estimadas</h3>
+                            <div class="result-item">
+                                <span>Inicio de Parición</span>
+                                <strong id="resInicioParicion">-</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Pico de Parición (Sugerido)</span>
+                                <strong id="resPicoParicion">-</strong>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--texto-mutado); margin-top:15px;"><em>* Cálculos orientativos con base en una tasa media de gestación de bovinos de carne. El manejo sanitario puede incidir en las tasas de preñez finales.</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulador 3: Carga Animal -->
+                <div id="sim-carga" class="sim-pane">
+                    <div class="sim-grid">
+                        <div class="sim-inputs">
+                            <form id="cargaForm">
+                                <div class="form-group">
+                                    <label for="hectareas">Superficie del Potrero (Has)</label>
+                                    <input type="number" id="hectareas" value="100" min="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tipoPasturaCarga">Tipo de Pastura / Estado</label>
+                                    <select id="tipoPasturaCarga">
+                                        <option value="campo_natural_degradado">Campo Natural Degradado (0.5 UG/ha)</option>
+                                        <option value="campo_natural_bueno" selected>Campo Natural Conservado (0.7 UG/ha)</option>
+                                        <option value="campo_mejorado">Campo Natural Mejorado (1.0 UG/ha)</option>
+                                        <option value="pradera_alta">Pradera Implantada Excelente (1.4 UG/ha)</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sim-results">
+                            <h3>Capacidad de Carga</h3>
+                            <div class="result-item">
+                                <span>Unidades Ganaderas Máximas (UG)</span>
+                                <strong id="resUgTotales">0.00</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Equivalencia aproximada en vacas de cría</span>
+                                <strong id="resVacasCria">0</strong>
+                            </div>
+                            <div class="result-item">
+                                <span>Equivalencia en novillos de 1-2 años</span>
+                                <strong id="resNovillos">0</strong>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--texto-mutado); margin-top:15px;"><em>* 1 UG equivale a una vaca de 400 kg de peso vivo gestante o criando un ternero. El pastoreo rotativo puede aumentar sensiblemente estos coeficientes de carga recomendados.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Hablemos</h2>
+                <p>Estoy disponible para coordinar tasaciones de ganado, planificar visitas técnicas a establecimientos, evaluar sistemas de pastoreo o canalizar sus operaciones con el respaldo del Escritorio Rural de Freitas.</p>
+                
+                <a href="https://wa.me/59892510561" target="_blank" class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="contact-card-text">
+                        <h4>WhatsApp / Teléfono</h4>
+                        <p>092 510 561</p>
+                    </div>
+                </a>
+
+                <a href="https://www.instagram.com/agrorivero_uy/" target="_blank" class="contact-card">
+                    <i class="fab fa-instagram"></i>
+                    <div class="contact-card-text">
+                        <h4>Instagram</h4>
+                        <p>@agrorivero_uy</p>
+                    </div>
+                </a>
+
+                <div class="contact-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div class="contact-card-text">
+                        <h4>Zonas de Acción Principal</h4>
+                        <p>Durazno, Florida, Flores y Tacuarembó (Uruguay)</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <!-- Formulario de Consulta Rápida por Email (Simulado) o Referencia de Mensaje -->
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 20px; font-size: 1.4rem; color: var(--verde-oscuro);">Enviar Consulta Directa</h3>
+                    <form id="directContactForm" onsubmit="sendContactMessage(event)">
+                        <div class="form-group">
+                            <label for="cNombre">Nombre Completo</label>
+                            <input type="text" id="cNombre" required placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="cEstablecimiento">Establecimiento / Paraje</label>
+                            <input type="text" id="cEstablecimiento" placeholder="Ej: El Palmar, Durazno">
+                        </div>
+                        <div class="form-group">
+                            <label for="cMensaje">Detalle del requerimiento o lote a comercializar</label>
+                            <textarea id="cMensaje" rows="4" required style="width: 100%; border-radius: var(--borde-radio); border: 1px solid #ccc; padding: 10px; font-family: inherit; font-size: 0.95rem; outline: none;" placeholder="Describa brevemente la hacienda o el asesoramiento requerido..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Enviar Mensaje vía WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="logo_jpg.jpg" alt="AgroRivero">
+                    <p>AgroRivero — Joaquín Rivero</p>
+                    <p style="opacity: 0.8; font-size: 0.85rem; margin-top: 5px;">Estudiante avanzado de Ing. Agroambiental (UTEC). Consignatario rural asociado a Escritorio Rural de Freitas.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Accesos Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#quien-soy">Quién Soy</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#pasturas">Pasturas</a></li>
+                        <li><a href="#simuladores">Simuladores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Redes & Contacto</h4>
+                    <p>Fono/WhatsApp: 092 510 561</p>
+                    <p>Durazno - Uruguay</p>
+                    <div class="footer-socials">
+                        <a href="https://wa.me/59892510561" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/agrorivero_uy/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>AgroRivero &copy; 2025 · Joaquín Rivero · Todos los derechos reservados.</p>
+                <p>Desarrollo Web Profesional Orientado al Sector Agropecuario.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // MENU RESPONSIVO (HAMBURGUESA)
+        const burger = document.getElementById('burger');
+        const navLinks = document.getElementById('navLinks');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        });
+
+        // Cerrar menú al hacer click en los links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.classList.remove('toggle');
+            });
+        });
+
+        // ACORDEÓN DE PASTURAS
+        const pastureHeaders = document.querySelectorAll('.pasture-header');
+
+        pastureHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                // Cerrar otros abiertos
+                document.querySelectorAll('.pasture-content').forEach(otherContent => {
+                    if (otherContent !== content && otherContent.classList.contains('active')) {
+                        otherContent.classList.remove('active');
+                        otherContent.style.maxHeight = null;
+                        otherContent.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                // Toggle actual
+                if (content.classList.contains('active')) {
+                    content.classList.remove('active');
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // PESTAÑAS (TABS) DE SIMULADORES
+        function switchSim(evt, simId) {
+            const panes = document.querySelectorAll('.sim-pane');
+            const tabs = document.querySelectorAll('.sim-tab');
+            
+            panes.forEach(pane => pane.classList.remove('active'));
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            document.getElementById(simId).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+
+        /* 
+           =========================================
+           DATOS DEL SIMULADOR - EDITABLES
+           =========================================
+        */
+        const PARAMETROS_SIMULADOR = {
+            gdpBase: {
+                hereford: 0.58,   // kg diarios
+                angus: 0.62,
+                cruza: 0.60,
+                cruza_indica: 0.52
+            },
+            multiplicadorAlimentacion: {
+                campo_natural: 0.9,
+                pradera: 1.3,
+                suplemento: 1.4,
+                pradera_suplemento: 1.6
+            },
+            preciosReferencia: {
+                terneroKg: 2.15, // Dólares por kg base ACG
+                comisionEscritorio: 0.03, // 3%
+                ivaComision: 0.22 // 22%
+            }
+        };
+
+        // VISIBILIDAD DE CAMPOS CONDICIONALES
+        function toggleDesteteMes() {
+            const destete = document.getElementById('destete').value;
+            const container = document.getElementById('mesDesteteContainer');
+            if (destete === 'si') {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+            calcularTerneros();
+        }
+
+        function togglePesadaInput() {
+            const tienePesada = document.getElementById('tienePesada').value;
+            const container = document.getElementById('pesoActualContainer');
+            if (tienePesada === 'si') {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+            calcularTerneros();
+        }
+
+        // CÁLCULO DE SIMULADOR DE TERNEROS
+        function calcularTerneros() {
+            // Inputs
+            const cantidad = parseInt(document.getElementById('cantTerneros').value) || 0;
+            const raza = document.getElementById('raza').value;
+            const alimentacion = document.getElementById('alimentacion').value;
+            const proyeccionMeses = parseInt(document.getElementById('proyeccion').value);
+            const tienePesada = document.getElementById('tienePesada').value;
+            
+            // Determinar Peso Actual Promedio
+            let pesoInicial = 160; // default estimación
+            if (tienePesada === 'si') {
+                pesoInicial = parseFloat(document.getElementById('pesoActual').value) || 160;
+            } else {
+                // Cálculo simple de estimación de peso basado en meses si no hay pesada
+                const mesNacimiento = parseInt(document.getElementById('mesNacimiento').value);
+                const mesActual = new Date().getMonth() + 1; // 1-12
+                let diferenciaMeses = mesActual - mesNacimiento;
+                if (diferenciaMeses < 0) diferenciaMeses += 12;
+                pesoInicial = 35 + (diferenciaMeses * 20); // Peso nacimiento base + 20 kg al mes aprox
+            }
+
+            // Ganancia Diaria de Peso (GDP)
+            const gdpSugerida = PARAMETROS_SIMULADOR.gdpBase[raza] * PARAMETROS_SIMULADOR.multiplicadorAlimentacion[alimentacion];
+            
+            // Proyección de peso
+            const diasProyeccion = proyeccionMeses * 30.5;
+            let pesoFinal = pesoInicial + (gdpSugerida * diasProyeccion);
+            
+            // Acotar a peso de faena lógico (480 kg) para que la estimación sea coherente
+            if (pesoFinal > 480) pesoFinal = 480;
+
+            // Cálculos financieros
+            const precioKg = PARAMETROS_SIMULADOR.preciosReferencia.terneroKg;
+            const valorUnitario = pesoFinal * precioKg;
+            const valorBrutoTotal = valorUnitario * cantidad;
+            
+            const comision = valorBrutoTotal * PARAMETROS_SIMULADOR.preciosReferencia.comisionEscritorio;
+            const ivaComision = comision * PARAMETROS_SIMULADOR.preciosReferencia.ivaComision;
+            const netoEstimado = valorBrutoTotal - comision - ivaComision;
+
+            // Renderizado en Pantalla
+            document.getElementById('resGdp').innerText = gdpSugerida.toFixed(3) + " kg/día";
+            document.getElementById('resPesoFinal').innerText = Math.round(pesoFinal) + " kg promedio";
+            document.getElementById('resPrecioBase').innerText = "U$S " + precioKg.toFixed(2) + " / kg";
+            document.getElementById('resValorBruto').innerText = "U$S " + valorBrutoTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resComision').innerText = "U$S " + comision.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resIva').innerText = "U$S " + ivaComision.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resNeto').innerText = "U$S " + netoEstimado.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // CÁLCULO DE CALENDARIO DE PARICIONES
+        function calcularPariciones() {
+            const fechaEntoradaVal = document.getElementById('fechaEntorada').value;
+            const diasGestacion = parseInt(document.getElementById('gestacionDias').value) || 283;
+
+            if(!fechaEntoradaVal) return;
+
+            const fechaEntorada = new Date(fechaEntoradaVal);
+            
+            // Inicio de parición
+            const fechaInicio = new Date(fechaEntorada);
+            fechaInicio.setDate(fechaInicio.getDate() + diasGestacion);
+
+            // Pico de parición (aprox. 30 días después del inicio)
+            const fechaPico = new Date(fechaInicio);
+            fechaPico.setDate(fechaPico.getDate() + 30);
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('resInicioParicion').innerText = fechaInicio.toLocaleDateString('es-ES', options);
+            document.getElementById('resPicoParicion').innerText = fechaPico.toLocaleDateString('es-ES', options);
+        }
+
+        // CÁLCULO DE CARGA ANIMAL
+        function calcularCarga() {
+            const hectareas = parseFloat(document.getElementById('hectareas').value) || 0;
+            const tipoPastura = document.getElementById('tipoPasturaCarga').value;
+
+            let ugPorHa = 0.7; // default
+            if (tipoPastura === 'campo_natural_degradado') ugPorHa = 0.5;
+            else if (tipoPastura === 'campo_natural_bueno') ugPorHa = 0.7;
+            else if (tipoPastura === 'campo_mejorado') ugPorHa = 1.0;
+            else if (tipoPastura === 'pradera_alta') ugPorHa = 1.4;
+
+            const ugTotales = hectareas * ugPorHa;
+            
+            // Equivalencias empíricas
+            // 1 vaca de cría = 1 UG
+            // 1 novillo de 1 a 2 años = 0.75 UG
+            const vacasCria = Math.floor(ugTotales / 1.0);
+            const novillos = Math.floor(ugTotales / 0.75);
+
+            document.getElementById('resUgTotales').innerText = ugTotales.toFixed(2) + " UG";
+            document.getElementById('resVacasCria').innerText = vacasCria + " cabezas";
+            document.getElementById('resNovillos').innerText = novillos + " cabezas";
+        }
+
+        // WHATSAPP REDIRECCIÓN - SIMULADOR
+        function consultarWhatsapp() {
+            const cantidad = document.getElementById('cantTerneros').value;
+            const raza = document.getElementById('raza').options[document.getElementById('raza').selectedIndex].text;
+            const pesoF = document.getElementById('resPesoFinal').innerText;
+            const retorno = document.getElementById('resNeto').innerText;
+
+            const mensaje = encodeURIComponent(
+                `Hola Joaquín, utilicé el simulador de AgroRivero. Tengo un lote de ${cantidad} terneros biotipo ${raza}. El simulador proyecta un peso de ${pesoF} y un retorno estimado de ${retorno}. Me gustaría coordinar una visita técnica.`
+            );
+            window.open(`https://wa.me/59892510561?text=${mensaje}`, '_blank');
+        }
+
+        // CONTACTO DIRECTO POR WHATSAPP
+        function sendContactMessage(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('cNombre').value;
+            const establecimiento = document.getElementById('cEstablecimiento').value;
+            const mensaje = document.getElementById('cMensaje').value;
+
+            const textoFormateado = encodeURIComponent(
+                `Hola Joaquín, mi nombre es ${nombre} de establecimiento ${establecimiento || 'No especificado'}. Detalle de mi consulta: ${mensaje}`
+            );
+            window.open(`https://wa.me/59892510561?text=${textoFormateado}`, '_blank');
+        }
+
+        // LISTENERS PARA RECALCULAR AUTOMÁTICAMENTE
+        document.getElementById('ternerosForm').addEventListener('input', calcularTerneros);
+        document.getElementById('ternerosForm').addEventListener('change', calcularTerneros);
+        
+        document.getElementById('paricionesForm').addEventListener('input', calcularPariciones);
+        document.getElementById('paricionesForm').addEventListener('change', calcularPariciones);
+
+        document.getElementById('cargaForm').addEventListener('input', calcularCarga);
+        document.getElementById('cargaForm').addEventListener('change', calcularCarga);
+
+        // EJECUCIÓN INICIAL AL CARGAR LA PÁGINA
+        window.addEventListener('DOMContentLoaded', () => {
+            toggleDesteteMes();
+            togglePesadaInput();
+            calcularTerneros();
+            calcularPariciones();
+            calcularCarga();
+        });
+    </script>
+</body>
+</html>
